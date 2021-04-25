@@ -29,7 +29,7 @@ export const CONFIG = {
     },
     {
       name: "merkur",
-      radius: 4879.4 * scalePlanetM,
+      radius: 4879.4 / 2 * scalePlanetM,
       color: "gray",
       distanceToSun: 57909000 * scaleDistance 
     },
