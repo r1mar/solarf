@@ -46,6 +46,7 @@ export default class App extends React.Component {
       sunConfig = CONFIG.planets.list.find(planet => planet.name === "sun"),
       planets = CONFIG.planets.list.filter(planet => planet.name !== "sun").map(planet => {
         return (          <Planet
+            key={planet.name}
             position={[
               (planet.distanceToSun * CONFIG.planets.scale) /
                 this.state.camera.zoom,
