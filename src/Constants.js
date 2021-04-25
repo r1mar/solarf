@@ -54,7 +54,7 @@ export const CONFIG = {
     {
       name: "jupiter",
       distanceToSun: 778510000 * scaleDistance,
-      radius: 142.984 / 2 * scalePlanetM,
+      radius: 142984 / 2 * scalePlanetM,
       color: "bisque" 
     }]
   }
