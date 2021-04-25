@@ -36,6 +36,7 @@ export default function Planet(props) {
   //if(props.zoom && props.zoom != zoom) {
   //  setZoom(props.zoom);
   //}
+  let planetConfig = CONFIG.planets.list.find(planet => planet.name === props.type);
   return (
     <mesh
       {...props}
@@ -47,14 +48,14 @@ export default function Planet(props) {
     >
       <sphereGeometry
         args={[
-          ((CONFIG.planets[props.type].radius ?? 1) * CONFIG.planets.scale) /
+          ((planetConfig.radius ?? 1) * CONFIG.planets.scale) /
             props.zoom,
           CONFIG.planets.widthSegments ?? 1,
           CONFIG.planets.heigthSegments ?? 1
         ]}
       />
       <meshStandardMaterial
-        color={hovered ? "hotpink" : CONFIG.planets[props.type].color}
+        color={hovered ? "hotpink" : planetConfig.color}
       />
     </mesh>
   );

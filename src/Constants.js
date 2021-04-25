@@ -21,19 +21,29 @@ export const CONFIG = {
     scale: 0.5,
     widthSegments: 32,
     heigthSegments: 32,
-    sun: {
+    list: [
+    {
+      name: "sun",
       radius: 696340 * scaleSun,
       color: "yellow"
     },
-    venus: {
+    {
+      name: "venus",
       radius: 6051.8 * scalePlanetM,
       color: "whitesmoke",
       distanceToSun: 108200000 * scaleDistance
     },
-    earth: {
+    {
+      name: "earth",
       radius: 6378.135 * scalePlanetM,
       color: "steelblue",
       distanceToSun: 149600000 * scaleDistance
-    }
+    }, 
+    {
+      name: "mars",
+      radius: 6792.4 / 2 * scalePlanetM,
+      color: "brown",
+      distanceToSun: 227990000 * scaleDistance 
+    }]
   }
 };

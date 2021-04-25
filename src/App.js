@@ -42,7 +42,20 @@ export default class App extends React.Component {
   }
 
   render() {
-    const light = new THREE.SpotLight(0xffffff);
+    const light = new THREE.SpotLight(0xffffff),
+      sunConfig = CONFIG.planets.list.find(planet => planet.name === "sun"),
+      planets = CONFIG.planets.list.filter(planet => planet.name !== "sun").map(planet => {
+        return (          <Planet
+            position={[
+              (planet.distanceToSun * CONFIG.planets.scale) /
+                this.state.camera.zoom,
+              0,
+              0
+            ]}
+            zoom={this.state.camera.zoom}
+            type={planet.name}
+          />);
+      })
 
     return (
       <CameraControl
@@ -69,7 +82,7 @@ export default class App extends React.Component {
             position={[
               0,
               0,
-              ((CONFIG.planets.sun.radius ?? 1) * CONFIG.planets.scale * 6) /
+              ((sunConfig.radius ?? 1) * CONFIG.planets.scale * 6) /
                 this.state.camera.zoom
             ]}
           />
@@ -95,26 +108,7 @@ export default class App extends React.Component {
             zoom={this.state.camera.zoom}
             cameraUpdate={true}
           />
-          <Planet
-            position={[
-              (CONFIG.planets.venus.distanceToSun * CONFIG.planets.scale) /
-                this.state.camera.zoom,
-              0,
-              0
-            ]}
-            zoom={this.state.camera.zoom}
-            type="venus"
-          />
-          <Planet
-            position={[
-              (CONFIG.planets.earth.distanceToSun * CONFIG.planets.scale) /
-                this.state.camera.zoom,
-              0,
-              0
-            ]}
-            zoom={this.state.camera.zoom}
-            type="earth"
-          />
+          {planets}
         </Canvas>
       </CameraControl>
     );
