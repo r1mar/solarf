@@ -28,6 +28,12 @@ export const CONFIG = {
       color: "yellow"
     },
     {
+      name: "merkur",
+      radius: 4879.4 * scalePlanetM,
+      color: "gray",
+      distanceToSun: 57909000 * scaleDistance 
+    },
+    {
       name: "venus",
       radius: 6051.8 * scalePlanetM,
       color: "whitesmoke",
@@ -44,6 +50,12 @@ export const CONFIG = {
       radius: 6792.4 / 2 * scalePlanetM,
       color: "brown",
       distanceToSun: 227990000 * scaleDistance 
+    },
+    {
+      name: "jupiter",
+      distanceToSun: 778510000 * scaleDistance,
+      radius: 142.984 / 2 * scalePlanetM,
+      color: "bisque" 
     }]
   }
 };
