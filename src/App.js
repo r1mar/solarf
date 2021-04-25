@@ -6,7 +6,6 @@ import CameraControl from "./CameraControl";
 import Planet from "./Planet";
 import { CONFIG } from "./Constants";
 import * as THREE from "three";
-import Stars from "./Stars";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -59,9 +58,9 @@ export default class App extends React.Component {
             far: 1000,
             position: [0, 0, 1000]
           }}
-          onCreated={({ gl, scene }) => {
+          /*onCreated={({ gl, scene }) => {
             scene.background = Stars(); //new THREE.Color('#373740');
-          }}
+          }}*/
         >
           <pointLight intensity={1.1} />
 
