@@ -48,7 +48,7 @@ export default function Planet(props) {
     >
       <sphereGeometry
         args={[
-          ((planetConfig.radius ?? 1) * CONFIG.planets.scale) /
+          (planetConfig.radius ?? 1) /
             props.zoom,
           CONFIG.planets.widthSegments ?? 1,
           CONFIG.planets.heigthSegments ?? 1

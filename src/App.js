@@ -48,7 +48,7 @@ export default class App extends React.Component {
         return (          <Planet
             key={planet.name}
             position={[
-              (planet.distanceToSun * CONFIG.planets.scale) /
+              planet.distanceToSun /
                 this.state.camera.zoom,
               0,
               0
@@ -83,7 +83,7 @@ export default class App extends React.Component {
             position={[
               0,
               0,
-              ((sunConfig.radius ?? 1) * CONFIG.planets.scale * 6) /
+              ((sunConfig.radius ?? 1) * 6) /
                 this.state.camera.zoom
             ]}
           />
