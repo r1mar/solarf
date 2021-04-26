@@ -45,14 +45,20 @@ export const CONFIG = {
     {
       name: "jupiter",
       distanceToSun: distanceToSun * 5, //778.510.000,
-      radius: earthRadius * 1.1,//142984 / 2 *
+      radius: earthRadius * 1.2,//142984 / 2 *
       color: "bisque" 
     },
     {
       name: "saturn",
-      radius: earthRadius * 1.1, //120536 / 2
+      radius: earthRadius * 1.2, //120536 / 2
       distanceToSun: distanceToSun * 6, //1.433.400.00
       color: "papayawhip"
+    },
+    {
+      name: "uranus",
+      distanceToSun: distanceToSun * 7, // 2.872,4
+      radius: earthRadius * 1.1, // 51.118 / 2
+      color: "#CFF"
     }]
   }
 };
