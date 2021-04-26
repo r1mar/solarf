@@ -1,14 +1,16 @@
 const scaleSun = 0.001,
   scalePlanetM = 0.033333333,
-  scaleDistance = 0.00004;
+  scaleDistance = 0.00004,
+  earthRadius = 200,
+  distanceToSun = 4000;
 
 export const CONFIG = {
   zoom: {
     min: 1.0,
-    max: 15.0
+    max: 50.0
   },
   map: {
-    size: 10000,
+    size: 30000,
     stars: {
       count: 100,
       width: {
@@ -24,37 +26,37 @@ export const CONFIG = {
     list: [
     {
       name: "sun",
-      radius: 696340 * scaleSun,
+      radius: earthRadius * 1.2, //696340
       color: "yellow"
     },
     {
       name: "merkur",
-      radius: 4879.4 / 2 * scalePlanetM,
+      radius: earthRadius * 0.8,//4879.4 / 2,
       color: "gray",
-      distanceToSun: 57909000 * scaleDistance 
+      distanceToSun: distanceToSun, //57909000
     },
     {
       name: "venus",
-      radius: 6051.8 * scalePlanetM,
+      radius: earthRadius,//6051.8 *
       color: "whitesmoke",
-      distanceToSun: 108200000 * scaleDistance
+      distanceToSun: distanceToSun * 2, //108200000 
     },
     {
       name: "earth",
-      radius: 6378.135 * scalePlanetM,
+      radius: earthRadius,//6378.135 *
       color: "steelblue",
-      distanceToSun: 149600000 * scaleDistance
+      distanceToSun: distanceToSun * 3, //149600000
     }, 
     {
       name: "mars",
-      radius: 6792.4 / 2 * scalePlanetM,
+      radius: earthRadius * 0.9,//6792.4 / 2
       color: "brown",
-      distanceToSun: 227990000 * scaleDistance 
+      distanceToSun: distanceToSun * 4, //227990000
     },
     {
       name: "jupiter",
-      distanceToSun: 778510000 * scaleDistance,
-      radius: 142984 / 2 * scalePlanetM,
+      distanceToSun: distanceToSun * 5, //778510000 * scaleDistance,
+      radius: earthRadius * 1.1,//142984 / 2 *
       color: "bisque" 
     }]
   }
