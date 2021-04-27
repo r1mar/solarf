@@ -15,7 +15,7 @@ export const CONFIG = {
     list: [
     {
       name: "sun",
-      radius: earthRadius * 1.2, //696340
+      radius: earthRadius * 1.5, //696340
       color: "yellow"
     },
     {
