@@ -7,10 +7,10 @@ export default function Planet(props) {
   // This reference will give us direct access to the mesh
   const mesh = useRef();
   // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-  const [camera, setCamera] = useState({}); //
-  //[zoom, setZoom] = useState(CONFIG.zoom.min);
+  const [hovered, setHover] = useState(false),
+        [active, setActive] = useState(false),
+        [camera, setCamera] = useState({}),
+        [winkel, setWinkel] = useState(0); 
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   //useFrame((state, delta) => (mesh.current.rotation.x += 0.01));
@@ -36,10 +36,19 @@ export default function Planet(props) {
   //if(props.zoom && props.zoom != zoom) {
   //  setZoom(props.zoom);
   //}
-  let planetConfig = CONFIG.planets.list.find(planet => planet.name === props.type);
+  let planetConfig = CONFIG.planets.list.find(
+    planet => planet.name === props.type
+  ), position = [0, 0, 0];
+
+  if(planetConfig.distanceToSun) {
+    position[0] = Math.cos(winkel) * planetConfig / props.zoom; // x Koordinate
+    position[1] = Math.sin(winkel) * planetConfig / props.zoom; // y Koordinate
+  }
+
   return (
     <mesh
       {...props}
+      position={[(planetConfig.distanceToSun ?? 0) / props.zoom, 0, 0]}
       ref={mesh}
       scale={active ? 1.5 : 1}
       onClick={event => setActive(!active)}
@@ -48,15 +57,12 @@ export default function Planet(props) {
     >
       <sphereGeometry
         args={[
-          (planetConfig.radius ?? 1) /
-            props.zoom,
+          (planetConfig.radius ?? 1) / props.zoom,
           CONFIG.planets.widthSegments ?? 1,
           CONFIG.planets.heigthSegments ?? 1
         ]}
       />
-      <meshStandardMaterial
-        color={hovered ? "hotpink" : planetConfig.color}
-      />
+      <meshStandardMaterial color={hovered ? "hotpink" : planetConfig.color} />
     </mesh>
   );
 }
