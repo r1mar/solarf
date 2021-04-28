@@ -10,7 +10,7 @@ export default function Planet(props) {
   const [hovered, setHover] = useState(false),
         [active, setActive] = useState(false),
         [camera, setCamera] = useState({}),
-        [winkel, setWinkel] = useState(0); 
+        [winkel, setWinkel] = useState(0)
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   //useFrame((state, delta) => (mesh.current.rotation.x += 0.01));
@@ -25,6 +25,8 @@ export default function Planet(props) {
 
       state.camera.updateProjectionMatrix();
     }
+
+    setWinkel(( winkel + CONFIG.planets.rotationSpeed ) % 360);
     /*const step = 0.1
     state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, zoom ? 10 : 42, step)
     state.camera.position.lerp(vec.set(zoom ? 25 : 10, zoom ? 1 : 5, zoom ? 0 : 10), step)

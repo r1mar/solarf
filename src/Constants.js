@@ -12,6 +12,7 @@ export const CONFIG = {
   planets: {
     widthSegments: 32,
     heigthSegments: 32,
+    rotationSpeed: 1,
     list: [
     {
       name: "sun",
