@@ -15,7 +15,9 @@ export default function CameraControl(props) {
     ref.current.addEventListener("wheel", preventDefault);
 
     return () => {
+      if(ref.current) {
       ref.current.removeEventListener("wheel", preventDefault);
+      }
     };
   });
 

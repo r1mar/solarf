@@ -9,8 +9,7 @@ export default function Planet(props) {
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false),
         [active, setActive] = useState(false),
-        [camera, setCamera] = useState({}),
-        [winkel, setWinkel] = useState(0)
+        [camera, setCamera] = useState({});
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   //useFrame((state, delta) => (mesh.current.rotation.x += 0.01));
@@ -25,8 +24,13 @@ export default function Planet(props) {
 
       state.camera.updateProjectionMatrix();
     }
-
-    setWinkel(( winkel + CONFIG.planets.rotationSpeed ) % 360);
+    let winkel = Math.atan2(mesh.current.position.y, mesh.current.position.x) * 180 / Math.PI;
+    
+    if(CONFIG.planets[props.type].distanceToSun) {
+    winkel = (winkel + CONFIG.planets.rotationSpeed) % 360;
+    mesh.current.position.x = Math.cos(winkel) * CONFIG.planets[props.type].distanceToSun;
+    mesh.current.position.y = Math.sin(winkel) * CONFIG.planets[props.type].distanceToSun;
+    }
     /*const step = 0.1
     state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, zoom ? 10 : 42, step)
     state.camera.position.lerp(vec.set(zoom ? 25 : 10, zoom ? 1 : 5, zoom ? 0 : 10), step)
@@ -42,9 +46,9 @@ export default function Planet(props) {
     planet => planet.name === props.type
   ), position = [0, 0, 0];
 
-  if(planetConfig.distanceToSun) {
-    position[0] = Math.cos(winkel) * planetConfig / props.zoom; // x Koordinate
-    position[1] = Math.sin(winkel) * planetConfig / props.zoom; // y Koordinate
+  if(planetConfig.distanceToSun && props.winkel) {
+    position[0] = Math.cos(props.winkel) * planetConfig.distanceToSun / props.zoom; // x Koordinate
+    position[1] = Math.sin(props.winkel) * planetConfig.distanceToSun / props.zoom; // y Koordinate
   }
 
   return (
