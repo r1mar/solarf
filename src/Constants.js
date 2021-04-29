@@ -3,7 +3,7 @@ const earthRadius = 100,
 
 export const CONFIG = {
   zoom: {
-    min: 1.0,
+    min: 10.0,
     max: 50.0
   },
   map: {

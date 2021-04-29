@@ -49,6 +49,7 @@ export default class App extends React.Component {
             key={planet.name}
             zoom={this.state.camera.zoom}
             type={planet.name}
+            winkel={Math.random() * 360}
           />);
       })
 

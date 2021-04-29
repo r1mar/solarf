@@ -24,13 +24,13 @@ export default function Planet(props) {
 
       state.camera.updateProjectionMatrix();
     }
-    let winkel = Math.atan2(mesh.current.position.y, mesh.current.position.x) * 180 / Math.PI;
+    //let winkel = Math.atan2(mesh.current.position.y, mesh.current.position.x) * 180 / Math.PI;
     
-    if(CONFIG.planets[props.type].distanceToSun) {
-    winkel = (winkel + CONFIG.planets.rotationSpeed) % 360;
-    mesh.current.position.x = Math.cos(winkel) * CONFIG.planets[props.type].distanceToSun;
-    mesh.current.position.y = Math.sin(winkel) * CONFIG.planets[props.type].distanceToSun;
-    }
+    //if(CONFIG.planets[props.type].distanceToSun) {
+    //winkel = (winkel + CONFIG.planets.rotationSpeed) % 360;
+    //mesh.current.position.x = Math.cos(winkel) * CONFIG.planets[props.type].distanceToSun;
+    //mesh.current.position.y = Math.sin(winkel) * CONFIG.planets[props.type].distanceToSun;
+    //}
     /*const step = 0.1
     state.camera.fov = THREE.MathUtils.lerp(state.camera.fov, zoom ? 10 : 42, step)
     state.camera.position.lerp(vec.set(zoom ? 25 : 10, zoom ? 1 : 5, zoom ? 0 : 10), step)
@@ -54,7 +54,7 @@ export default function Planet(props) {
   return (
     <mesh
       {...props}
-      position={[(planetConfig.distanceToSun ?? 0) / props.zoom, 0, 0]}
+      position={position}
       ref={mesh}
       scale={active ? 1.5 : 1}
       onClick={event => setActive(!active)}
