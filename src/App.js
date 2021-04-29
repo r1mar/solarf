@@ -16,7 +16,10 @@ export default class App extends React.Component {
         x: 0,
         y: 0,
         zoom: CONFIG.zoom.min
-      }
+      },
+      planets: CONFIG.planets.list
+        .filter(planet => planet.name !== "sun")
+        .map(planet => ({ ...planet, winkel: Math.random() * 360 }))
     };
 
     this.onMoveCamera = this.onMoveCamera.bind(this);
@@ -44,14 +47,16 @@ export default class App extends React.Component {
   render() {
     const light = new THREE.SpotLight(0xffffff),
       sunConfig = CONFIG.planets.list.find(planet => planet.name === "sun"),
-      planets = CONFIG.planets.list.filter(planet => planet.name !== "sun").map(planet => {
-        return (          <Planet
+      planets = this.state.planets.map(planet => {
+        return (
+          <Planet
             key={planet.name}
             zoom={this.state.camera.zoom}
             type={planet.name}
-            winkel={Math.random() * 360}
-          />);
-      })
+            winkel={planet.winkel}
+          />
+        );
+      });
 
     return (
       <CameraControl
@@ -78,8 +83,7 @@ export default class App extends React.Component {
             position={[
               0,
               0,
-              ((sunConfig.radius ?? 1) * 6) /
-                this.state.camera.zoom
+              ((sunConfig.radius ?? 1) * 6) / this.state.camera.zoom
             ]}
           />
           <primitive object={light.target} position={[0, 0, 0]} />
