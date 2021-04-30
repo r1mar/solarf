@@ -1,11 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import Anchor from "./Anchor";
 import { CONFIG } from "./Constants";
 
 export default function Planet(props) {
-  // This reference will give us direct access to the mesh
-  const mesh = useRef();
   // Set up state for the hovered and active state
   const [hovered, setHover] = useState(false),
     [active, setActive] = useState(false);
@@ -23,7 +21,6 @@ export default function Planet(props) {
       <mesh
         {...props}
         position={position}
-        ref={mesh}
         scale={active ? 1.5 : 1}
         onClick={event => setActive(!active)}
         onPointerOver={event => setHover(true)}
