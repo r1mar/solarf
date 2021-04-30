@@ -4,6 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 
 import CameraControl from "./CameraControl";
 import Planet from "./Planet";
+import Sun from "./Sun";
 import Camera from "./Camera";
 import { CONFIG } from "./Constants";
 import * as THREE from "three";
@@ -18,9 +19,10 @@ export default class App extends React.Component {
         y: 0,
         zoom: CONFIG.zoom.min
       },
-      planets: CONFIG.planets.list
-        .filter(planet => planet.name !== "sun")
-        .map(planet => ({ ...planet, winkel: Math.random() * 360 }))
+      planets: CONFIG.planets.list.map(planet => ({
+        ...planet,
+        winkel: Math.random() * 360
+      }))
     };
 
     this.onMoveCamera = this.onMoveCamera.bind(this);
@@ -47,7 +49,7 @@ export default class App extends React.Component {
 
   render() {
     const light = new THREE.SpotLight(0xffffff),
-      sunConfig = CONFIG.planets.list.find(planet => planet.name === "sun"),
+      sunConfig = CONFIG.planets.sun,
       planets = this.state.planets.map(planet => {
         return (
           <Planet
@@ -73,9 +75,6 @@ export default class App extends React.Component {
             far: 1000,
             position: [0, 0, 1000]
           }}
-          /*onCreated={({ gl, scene }) => {
-            scene.background = Stars(); //new THREE.Color('#373740');
-          }}*/
         >
           <pointLight intensity={1.1} />
 
@@ -101,15 +100,8 @@ export default class App extends React.Component {
             rotation={[Math.PI / 2, 0, 0]}
           />
 
-          <Camera
-            x={this.state.camera.x}
-            y={this.state.camera.y}
-          />
-          <Planet
-            position={[0, 0, 0]}
-            type="sun"
-            zoom={this.state.camera.zoom}
-          />
+          <Camera x={this.state.camera.x} y={this.state.camera.y} />
+          <Sun zoom={this.state.camera.zoom} />
           {planets}
         </Canvas>
       </CameraControl>
