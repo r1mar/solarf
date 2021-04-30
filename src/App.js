@@ -4,6 +4,7 @@ import { Canvas, useThree } from "@react-three/fiber";
 
 import CameraControl from "./CameraControl";
 import Planet from "./Planet";
+import Camera from "./Camera";
 import { CONFIG } from "./Constants";
 import * as THREE from "three";
 
@@ -100,13 +101,14 @@ export default class App extends React.Component {
             rotation={[Math.PI / 2, 0, 0]}
           />
 
+          <Camera
+            x={this.state.camera.x}
+            y={this.state.camera.y}
+          />
           <Planet
             position={[0, 0, 0]}
             type="sun"
-            cameraX={this.state.camera.x}
-            cameraY={this.state.camera.y}
             zoom={this.state.camera.zoom}
-            cameraUpdate={true}
           />
           {planets}
         </Canvas>
