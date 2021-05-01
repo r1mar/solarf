@@ -22,7 +22,6 @@ export default function CameraControl(props) {
   });
 
   function onMoveCamera(e, x, y) {
-    e.preventDefault();
     if (props.onMoveCamera && last) {
       props.onMoveCamera({
         x: last.x - x,
@@ -92,8 +91,6 @@ export default function CameraControl(props) {
       (start.x != e.changedTouches[0].clientX ||
         start.y != e.changedTouches[0].clientY)
     ) {
-      e.preventDefault();
-
       onMoveCamera(e, e.changedTouches[0].clientX, e.changedTouches[0].clientY);
     }
   }
