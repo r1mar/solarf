@@ -6,6 +6,7 @@ import CameraControl from "./CameraControl";
 import Planet from "./Planet";
 import Sun from "./Sun";
 import Camera from "./Camera";
+import ControlPanel from "./ControlPanel";
 import { CONFIG } from "./Constants";
 import * as THREE from "three";
 
@@ -62,6 +63,8 @@ export default class App extends React.Component {
       });
 
     return (
+      <div className="fullScreen gridMain">
+      <ControlPanel />
       <CameraControl
         onMoveCamera={this.onMoveCamera}
         onChangeZoom={this.onChangeZoom}
@@ -105,6 +108,7 @@ export default class App extends React.Component {
           {planets}
         </Canvas>
       </CameraControl>
+      </div>
     );
   }
 }
