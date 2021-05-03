@@ -29,3 +29,8 @@ body {
   display: grid;
   grid-template-columns: 300px auto;
 }
+
+.gridMainCollapsed {
+  display: grid;
+  grid-template-columns: 30px auto;
+}

@@ -25,7 +25,8 @@ export default class App extends React.Component {
       planets: CONFIG.planets.list.map(planet => ({
         ...planet,
         winkel: Math.random() * 360
-      }))
+      })),
+      controlPanel: "open"
     };
 
     this.onMoveCamera = this.onMoveCamera.bind(this);
@@ -65,8 +66,8 @@ export default class App extends React.Component {
       });
 
     return (
-      <div className="fullScreen gridMain">
-      <ControlPanel />
+      <div className={ this.state.controlPanel === "open" ? "fullScreen gridMain" : "fullScreen gridMainCollapsed"}>
+      <ControlPanel collapse={this.setState({ controlPanel: "collapsed"})}/>
       <CameraControl
         onMoveCamera={this.onMoveCamera}
         onChangeZoom={this.onChangeZoom}
