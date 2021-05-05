@@ -3,7 +3,7 @@ import "./ControlPanel.css";
 
 export default function ControlPanel(props) {
   const [collapsed, setCollapsed] = useState(false);
-
+  
   return (
     <div className="controlPanel" style={{ width: collapsed ? 30 : 300 }}>
       <div className="toolbar">
@@ -11,7 +11,7 @@ export default function ControlPanel(props) {
           id="controlPanelCloseButton"
           onClick={() => setCollapsed(!collapsed)}
         >
-          &laquo;
+          { collapsed ? "»" : "«" }
         </button>
       </div>
     </div>
