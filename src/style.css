@@ -24,13 +24,3 @@ body {
   width: 100%;
   height: 100%;
 }
-
-.gridMain {
-  display: grid;
-  grid-template-columns: 300px auto;
-}
-
-.gridMainCollapsed {
-  display: grid;
-  grid-template-columns: 30px auto;
-}
