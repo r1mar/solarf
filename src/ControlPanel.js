@@ -14,6 +14,7 @@ export default function ControlPanel(props) {
           { collapsed ? "»" : "«" }
         </button>
       </div>
+      {props.children}
     </div>
   );
 }

@@ -66,10 +66,6 @@ export default class App extends React.Component {
 
     return (
       <div className="fullScreen">
-      <CameraControl
-        onMoveCamera={this.onMoveCamera}
-        onChangeZoom={this.onChangeZoom}
-      >
         <Canvas
           className="main"
           orthographic={true}
@@ -108,8 +104,9 @@ export default class App extends React.Component {
           <Sun zoom={this.state.camera.zoom} />
           {planets}
         </Canvas>
-      </CameraControl>
-      <ControlPanel />
+      <ControlPanel>
+        <CameraControl onMoveCamera={this.onMoveCamers} onChangeZoom={this.onChangeZoom} />
+      </ControlPanel>
       </div>
     );
   }
