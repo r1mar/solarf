@@ -3,6 +3,7 @@ import "./style.css";
 import { Canvas, useThree } from "@react-three/fiber";
 
 import CameraControl from "./CameraControl";
+import Preview from "./Preview";
 import Planet from "./Planet";
 import Sun from "./Sun";
 import Camera from "./Camera";
@@ -105,6 +106,7 @@ export default class App extends React.Component {
           {planets}
         </Canvas>
       <ControlPanel>
+        <Preview onMoveCamera={this.onMoveCamers} planet={this.state.planets} />
         <CameraControl onMoveCamera={this.onMoveCamers} onChangeZoom={this.onChangeZoom} />
       </ControlPanel>
       </div>

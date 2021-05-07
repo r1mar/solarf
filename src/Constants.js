@@ -9,6 +9,12 @@ export const CONFIG = {
   map: {
     size: 35000
   },
+  preview: {
+    width: 300,
+    height: 300,
+    sunRadius: 15,
+    planetRadius: 10
+  },
   planets: {
     widthSegments: 32,
     heigthSegments: 32,
